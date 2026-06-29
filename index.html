@@ -57,6 +57,12 @@
             align-items: center;
         }
 
+        .header-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -102,7 +108,7 @@
         .ui-showcase {
             position: relative;
             width: 100%;
-            max-width: 560px;
+            max-width: 620px;
             justify-self: end;
             margin-left: auto;
         }
@@ -113,7 +119,7 @@
             overflow: hidden;
             border: 0;
             box-shadow: none;
-            aspect-ratio: 4 / 4.6;
+            aspect-ratio: 9 / 16;
             background: transparent;
         }
 
@@ -312,7 +318,8 @@
             <img src="assets/kmu_logo.svg" alt="KMU Logo" class="logo-img">
             <span class="brand-name">Campus Reports</span>
         </div>
-        <nav>
+        <nav class="header-nav">
+            <a href="about.html" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">About</a>
             <a href="https://campusreports.vercel.app/login" class="btn btn-secondary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;">Sign In</a>
         </nav>
     </header>
@@ -348,16 +355,8 @@
         </div>
 
         <div class="ui-showcase" aria-label="Campus Reports UI preview">
-            <div class="ui-frame">
-                <img src="assets/UI/dashboard.png" class="ui-image active" alt="Campus Reports dashboard preview">
-                <img src="assets/UI/sidebar.png" class="ui-image" alt="Campus Reports sidebar preview">
-                <img src="assets/UI/UI.png" class="ui-image" alt="Campus Reports full interface preview">
-            </div>
-            <div class="ui-indicators">
-                <span class="indicator active"></span>
-                <span class="indicator"></span>
-                <span class="indicator"></span>
-            </div>
+            <div class="ui-frame" id="ui-frame"></div>
+            <div class="ui-indicators" id="ui-indicators"></div>
         </div>
     </main>
 
@@ -367,9 +366,37 @@
     </footer>
 
     <script>
-        const images = Array.from(document.querySelectorAll('.ui-image'));
-        const indicators = Array.from(document.querySelectorAll('.indicator'));
+        const imageSources = [
+            'assets/UI/dashboard.png',
+            'assets/UI/sidebar.png',
+            'assets/UI/UI.png',
+            'assets/UI/dash.png',
+            'assets/UI/dash-ai.png',
+            'assets/UI/form.png',
+            'assets/UI/login.png',
+            'assets/UI/ai.png',
+            'assets/UI/anonymous.png'
+        ];
+
+        const frame = document.getElementById('ui-frame');
+        const indicatorsContainer = document.getElementById('ui-indicators');
+        const images = [];
+        const indicators = [];
         let activeIndex = 0;
+
+        imageSources.forEach((src, index) => {
+            const image = document.createElement('img');
+            image.src = src;
+            image.className = 'ui-image' + (index === 0 ? ' active' : '');
+            image.alt = `Campus Reports UI preview ${index + 1}`;
+            frame.appendChild(image);
+            images.push(image);
+
+            const indicator = document.createElement('span');
+            indicator.className = 'indicator' + (index === 0 ? ' active' : '');
+            indicatorsContainer.appendChild(indicator);
+            indicators.push(indicator);
+        });
 
         function setActiveSlide(index) {
             activeIndex = index;
