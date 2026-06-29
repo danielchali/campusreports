@@ -1,24 +1,48 @@
-# Campus Reports - SEO Configuration
-# Allow all search engines to crawl the website
+# Campus Reports - SEO & Crawler Configuration
+# Last updated: 2026-06-29
+# This file controls how search engines crawl and index the website
 
+# Default rules for all bots
 User-agent: *
 Allow: /
 Disallow: /private/
 Disallow: /*.json$
 Disallow: /*.pdf$
+Disallow: /admin/
+Disallow: /api/
+Disallow: /.git/
+Disallow: /node_modules/
 
 # Sitemap location
 Sitemap: https://campusreports.vercel.app/sitemap.xml
 
-# Crawl delay (optional - prevents server overload)
+# Crawl delay (prevents server overload)
 Crawl-delay: 1
+Request-rate: 1/1s
 
 # Specific rules for Google
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 0
+Request-rate: unlimited
 
 # Specific rules for Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
+Request-rate: 1/1s
+
+# Specific rules for DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

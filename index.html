@@ -24,6 +24,18 @@
     <meta name="twitter:image" content="https://campusreports.vercel.app/assets/UI/dashboard.png">
     
     <link rel="icon" type="image/svg+xml" href="assets/kmu_logo.svg">
+    <meta name="theme-color" content="#008542">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Campus Reports">
+    <link rel="apple-touch-icon" href="assets/kmu_logo.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/png">
+    <meta name="twitter:image:alt" content="Campus Reports Dashboard UI">
+    <meta name="twitter:creator" content="@danielchali">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://campusreports.vercel.app">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -31,9 +43,37 @@
       "name": "Campus Reports",
       "url": "https://campusreports.vercel.app/",
       "description": "A student-first platform for anonymous campus issue reporting, maintenance requests, and real-time progress tracking.",
+      "image": "https://campusreports.vercel.app/assets/UI/dashboard.png",
       "publisher": {
         "@type": "Organization",
-        "name": "Campus Reports"
+        "name": "Campus Reports",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://campusreports.vercel.app/assets/kmu_logo.svg"
+        }
+      },
+      "potentialAction": {
+        "@type": "Action",
+        "target": "https://campusreports.vercel.app/",
+        "name": "Start reporting campus issues"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Campus Reports",
+      "url": "https://campusreports.vercel.app/",
+      "logo": "https://campusreports.vercel.app/assets/kmu_logo.svg",
+      "description": "Student-first platform for anonymous issue reporting and maintenance requests at Kapasa Makasa University",
+      "sameAs": [
+        "https://github.com/danielchali/campusreports"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Support",
+        "url": "https://campusreports.vercel.app/"
       }
     }
     </script>
@@ -393,19 +433,19 @@
 <body>
     <div class="overlay"></div>
     
-    <header>
+    <header role="banner">
         <div class="logo-container">
-            <img src="assets/kmu_logo.svg" alt="KMU Logo" class="logo-img">
+            <img src="assets/kmu_logo.svg" alt="Campus Reports - KMU Logo" class="logo-img" width="50" height="50">
             <span class="brand-name">Campus Reports</span>
         </div>
-        <nav class="header-nav">
+        <nav class="header-nav" aria-label="Main navigation">
             <a href="about.html" class="btn btn-secondary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">About</a>
         </nav>
     </header>
 
-    <main>
+    <main role="main">
         <section class="hero-content" aria-labelledby="hero-title">
-            <div class="eyebrow">Kapasa Makasa University</div>
+            <p class="eyebrow">Kapasa Makasa University</p>
             <h1 id="hero-title">Report Issues. Request Maintenance. Track Progress.</h1>
             <p class="description">Campus Reports is a secure student-first platform for anonymous reporting, facility maintenance requests, and real-time updates from submission to resolution.</p>
             
@@ -433,13 +473,13 @@
             </div>
         </section>
 
-        <div class="ui-showcase" aria-label="Campus Reports UI preview">
-            <div class="ui-frame" id="ui-frame"></div>
-            <div class="ui-indicators" id="ui-indicators"></div>
-        </div>
+        <aside class="ui-showcase" aria-label="Campus Reports UI preview carousel" role="region">
+            <div class="ui-frame" id="ui-frame" role="img" aria-live="polite" aria-label="UI screenshot carousel"></div>
+            <div class="ui-indicators" id="ui-indicators" role="tablist" aria-label="Carousel slide indicators"></div>
+        </aside>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div>© 2026 Campus Reports. Developed by <a href="https://danielchali.github.io/">Daniel Chali</a></div>
         <div>Part of the KMU Digital Ecosystem</div>
     </footer>
@@ -467,12 +507,16 @@
             const image = document.createElement('img');
             image.src = src;
             image.className = 'ui-image' + (index === 0 ? ' active' : '');
-            image.alt = `Campus Reports UI preview ${index + 1}`;
+            image.alt = `Campus Reports UI screenshot ${index + 1}: Application interface demonstration`;
+            image.loading = 'lazy';
             frame.appendChild(image);
             images.push(image);
 
-            const indicator = document.createElement('span');
+            const indicator = document.createElement('button');
             indicator.className = 'indicator' + (index === 0 ? ' active' : '');
+            indicator.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            indicator.setAttribute('aria-pressed', index === 0 ? 'true' : 'false');
+            indicator.setAttribute('role', 'tab');
             indicatorsContainer.appendChild(indicator);
             indicators.push(indicator);
         });
@@ -487,7 +531,10 @@
                 image.style.position = isActive ? 'relative' : 'absolute';
             });
             indicators.forEach((indicator, indicatorIndex) => {
-                indicator.classList.toggle('active', indicatorIndex === activeIndex);
+                const isActive = indicatorIndex === activeIndex;
+                indicator.classList.toggle('active', isActive);
+                indicator.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+                indicator.setAttribute('aria-current', isActive ? 'true' : 'false');
             });
         }
 

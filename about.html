@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Campus Reports</title>
-    <meta name="description" content="Campus Reports is a student-first platform for anonymous issue reporting, maintenance requests, and real-time progress tracking at Kapasa Makasa University.">
+    <title>About Campus Reports | Student Issue Reporting Platform</title>
+    <meta name="description" content="Learn about Campus Reports, a student-first platform for anonymous issue reporting, maintenance requests, and real-time progress tracking at Kapasa Makasa University.">
+    <meta name="keywords" content="about campus reports, student platform, university maintenance, anonymous reporting, KMU">
+    <meta name="author" content="Daniel Chali">
+    <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="WL2Hsh_H3trQjtqpxyS0H0rR5uAT8rYX7Dym3blXRmc" />
+    <link rel="canonical" href="https://campusreports.vercel.app/about.html">
     <link rel="sitemap" type="application/xml" href="https://campusreports.vercel.app/sitemap.xml">
     <link rel="icon" type="image/svg+xml" href="assets/kmu_logo.svg">
+    <meta name="theme-color" content="#008542">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta property="og:title" content="About Campus Reports | Student Issue Reporting Platform">
+    <meta property="og:description" content="Discover how Campus Reports empowers students to report issues, request maintenance, and track progress in real-time.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://campusreports.vercel.app/about.html">
+    <meta property="og:image" content="https://campusreports.vercel.app/assets/kmu_logo.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="About Campus Reports">
+    <meta name="twitter:description" content="Learn about Campus Reports, empowering students with anonymous reporting and real-time tracking.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <style>
         :root {
@@ -392,24 +407,25 @@
 <body>
     <div class="overlay"></div>
 
-    <header>
+    <header role="banner">
         <div class="logo-container">
-            <img src="assets/kmu_logo.svg" alt="KMU Logo" class="logo-img">
+            <img src="assets/kmu_logo.svg" alt="Campus Reports - KMU Logo" class="logo-img" width="50" height="50">
             <span class="brand-name">Campus Reports</span>
         </div>
-        <nav class="header-nav">
+        <nav class="header-nav" aria-label="Main navigation">
             <a href="index.html" class="btn">Home</a>
         </nav>
     </header>
 
-    <main>
-        <section class="about-hero">
+    <main role="main">
+        <article class="about-hero">
             <p class="eyebrow">About Campus Reports</p>
             <h1>Empowering students to shape a better campus.</h1>
             <p class="lead">Campus Reports is a student-first platform that helps universities respond faster to everyday campus problems. It gives students a simple way to report issues, request maintenance, and track the progress of each request from submission to resolution.</p>
 
             <!-- Core Values -->
-            <div class="values-grid">
+            <section class="values-grid" aria-labelledby="values-heading">
+                <h2 id="values-heading" style="display: none;">Core Values</h2>
                 <div class="value-card">
                     <div class="value-icon">
                         <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
@@ -434,44 +450,44 @@
             </div>
 
             <!-- Our Story -->
-            <div class="story-section">
+            <section class="story-section" aria-labelledby="mission-heading">
                 <p class="section-label">Our Mission</p>
-                <h2>Why Campus Reports Exists</h2>
+                <h2 id="mission-heading">Why Campus Reports Exists</h2>
                 <p>Students at Kapasa Makasa University face challenges every day — broken facilities, safety concerns, and issues that often go unreported. Campus Reports was built to close that gap between students and the people who can help.</p>
                 <p>The platform is built around three core goals: giving students a voice through anonymous reporting, streamlining maintenance requests so problems get fixed faster, and providing full transparency through real-time tracking so no report falls through the cracks.</p>
             </div>
 
             <!-- How It Works -->
-            <div class="steps-section">
-                <h2>How It Works</h2>
-                <div class="steps-list">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
+            <section class="steps-section" aria-labelledby="how-it-works-heading">
+                <h2 id="how-it-works-heading">How It Works</h2>
+                <ol class="steps-list">
+                    <li class="step-item">
+                        <div class="step-number" aria-hidden="true">1</div>
                         <div class="step-content">
                             <h3>Submit a Report</h3>
                             <p>Describe the issue, select the category, and choose whether to report anonymously or with your student account.</p>
                         </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number" aria-hidden="true">2</div>
                         <div class="step-content">
                             <h3>Track Progress</h3>
                             <p>Monitor your report's status in real time — from acknowledged to in progress to resolved.</p>
                         </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">3</div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number" aria-hidden="true">3</div>
                         <div class="step-content">
                             <h3>See Results</h3>
                             <p>Issues get routed to the right team for action, and you'll know when your campus is a better place because of your report.</p>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    </li>
+                </ol>
+            </section>
+        </article>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
         <div>© 2026 Campus Reports. Developed by <a href="https://danielchali.github.io/">Daniel Chali</a></div>
         <div>Part of the KMU Digital Ecosystem</div>
     </footer>
